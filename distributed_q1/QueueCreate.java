@@ -12,6 +12,7 @@ public class QueueCreate {
 	private final Map<Integer, Integer> sendSimulation;
 	private final Map<Integer, Integer> recSimulation;
 	private final Map<Integer, Integer> internalSimulation;
+	public int eventCount = 0;
 
 	
 	public Map<Integer, BlockingQueue<BigInteger>> getProcessToQueueMap() {
@@ -29,17 +30,14 @@ public class QueueCreate {
 
 	public QueueCreate(List<Integer> primes){
 		processToQueueMap=new HashMap<>();
-		sendSimulation = new HashMap<>();
-		recSimulation = new HashMap<>();
-		internalSimulation = new HashMap<>();
+		sendSimulation = new HashMap<Integer,Integer>();
+		recSimulation = new HashMap<Integer,Integer>();
+		internalSimulation = new HashMap<Integer,Integer>();
 		primes.forEach(prime->{
 			processToQueueMap.put(prime, new ArrayBlockingQueue<BigInteger>(10));
 			sendSimulation.put(prime, 0);
 			recSimulation.put(prime, 0);
 			internalSimulation.put(prime, 0);
-
 		});
 	}
-	
-	
 }

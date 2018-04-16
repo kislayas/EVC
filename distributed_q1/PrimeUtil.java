@@ -5,7 +5,6 @@ package distributed_q1;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 /**
  * @author kislaya
@@ -13,7 +12,7 @@ import java.util.Random;
  */
 public class PrimeUtil {
 	private List<Integer> primes;
-	private Random random;
+	// private Random random;
 	
 	public List<Integer> getPrimes() {
 		return primes;
