@@ -5,7 +5,7 @@
  */
 package distributed_q1;
 
-import java.io.IOException;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,22 +17,24 @@ import java.util.List;
 public class Distributed_Q1 {
 	
     //generate n prime numbers
-	static WriteFile writeFile1 = null;
-	static WriteFile writeFile2 = null;
-    public static void simulation(List<Integer> primes){
+	//static WriteFile writeFile1 = null;
+	//static WriteFile writeFile2 = null;
+	//static PrintWriter out = null;
+    public static void simulation(List<Integer> primes, int number){
     	QueueCreate queueCreate= new QueueCreate(primes);
-		try {
-			writeFile1 = new WriteFile("EventsVsEventSize.dat");
-			writeFile2 = new WriteFile("TEventsVsPEventSize.dat");
+		/*try {
+			//out = new PrintWriter("EventsVsEventSize1.dat");
+			//writeFile1 = new WriteFile("EventsVsEventSize1.dat");
+			//writeFile2 = new WriteFile("TEventsVsPEventSize1.dat");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}*/
         primes.forEach(prime->{
         	List<Integer> tempPrimes=new ArrayList<>();
         	tempPrimes.addAll(primes);
         	tempPrimes.remove(prime);
-            new Thread(new MyRunnable(prime,tempPrimes,queueCreate, writeFile1, writeFile2)).start();
+            new Thread(new MyRunnable(primes, prime,tempPrimes,queueCreate)).start();
         });
     }
 }
